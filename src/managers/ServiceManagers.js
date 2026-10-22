@@ -25,7 +25,7 @@ export class ServiceManager {
         }
     }
 
-    
+
     async getServiceById(id) {
         const services = await this.getServices();
         const service = services.find((s) => String(s.id) === String(id));
@@ -35,17 +35,17 @@ export class ServiceManager {
         return service;
     }
 
-   
-    async addService(serviceData) {
-        const { name, description, duration, price, category, available = true } = serviceData;
 
-        if (!name || !description || duration === undefined || price === undefined || !category) {
+    async addService(serviceData) {
+        const { name, description, duration, price, category, available } = serviceData;
+
+        if (!name || !description || duration === undefined || price === undefined || !category || available === undefined) {
             throw new Error('Todos los campos son obligatorios (name, description, duration, price, category)');
         }
 
         const services = await this.getServices();
 
-      
+
         const maxId = services.reduce((max, s) => {
             const numId = Number(s.id);
             return !isNaN(numId) && numId > max ? numId : max;
@@ -70,6 +70,11 @@ export class ServiceManager {
     async updateService(id, updatedData) {
         const services = await this.getServices();
         const index = services.findIndex((s) => String(s.id) === String(id));
+
+        if (updatedData.id !== undefined && String(updatedData.id) !== String(id)) {
+            throw new Error("No está permitido modificar el ID de un servicio");
+        }
+        
         if (index === -1) {
             throw new Error(`Servicio con ID ${id} no encontrado`);
         }
@@ -77,14 +82,14 @@ export class ServiceManager {
         services[index] = {
             ...services[index],
             ...updatedData,
-            id: services[index].id, 
+            id: services[index].id,
         };
 
         await fs.writeFile(this.path, JSON.stringify(services, null, 2), 'utf-8');
         return services[index];
     }
 
-    
+
     async deleteService(id) {
         const services = await this.getServices();
         const index = services.findIndex((s) => String(s.id) === String(id));

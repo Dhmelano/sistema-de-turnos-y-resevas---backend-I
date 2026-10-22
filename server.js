@@ -1,5 +1,5 @@
 import http from 'http';
-import { config } from './src/config/config.js';
+import { config } from './src/config/env.config.js';
 
 const port = config.PORT;
 
