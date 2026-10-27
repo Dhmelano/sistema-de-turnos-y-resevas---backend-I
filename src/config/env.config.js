@@ -9,7 +9,7 @@ if (!process.env.PORT || !process.env.NODE_ENV) {
 export const config = {
     PORT: process.env.PORT || 8080,
     APP_NAME : process.env.APP_NAME  || 'SISTEMA DE BACKEND DE TURNOS Y RESERVA',
-    ENV : process.env.ENV || 'DEV',
+    ENV : process.env.NODE_ENV || 'DEV',
     MONGO_DB_URI : process.env.MONGO_DB_URI || '',
 
 };

@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DEFAULT_PATH = path.resolve(__dirname, '../data/data.json');
+const DEFAULT_PATH = path.resolve(__dirname, '../data/service.json');
 
 export class ServiceManager {
     constructor(filePath = DEFAULT_PATH) {
