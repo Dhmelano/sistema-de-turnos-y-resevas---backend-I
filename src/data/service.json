@@ -5,7 +5,7 @@
     "description": "Corte personalizado con lavado y peinado incluido.",
     "duration": 45,
     "price": 8500,
-    "category": "Barbería",
+    "category": "Barberia",
     "available": true
   },
   {
@@ -14,7 +14,7 @@
     "description": "Recorte, perfilado con navaja tradicional y tratamiento con aceites hidratantes.",
     "duration": 30,
     "price": 5000,
-    "category": "Barbería",
+    "category": "Barberia",
     "available": true
   },
   {
