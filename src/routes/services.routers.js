@@ -32,7 +32,7 @@ router.post("/api/services", async (req, res) => {
     try {
         const newService = req.body;
         const service = await serviceManager.addService(newService);
-        return res.status(201).json({ status: 'succes', playload: service });
+        return res.status(201).json({ status: 'succes', payload: service });
     } catch (error) {
          return res.status(400).json({ status: 'error', message: error.message });
     }
@@ -55,7 +55,7 @@ router.delete("/api/services/:id", async (req, res) => {
         console.log(id)
         const serviceDelete = await serviceManager.deleteService(id);
         return res.status(200).json({ status: 'success', payload: serviceDelete });
-    } catch {
+    } catch (error) {
          return res.status(404).json({ status: 'error', message: error.message });
     }
 
