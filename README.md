@@ -37,3 +37,15 @@ Iniciar en producción / modo estándar:
 
 npm start
 Ejecuta node src/server.js.
+
+Rutas para probar el proyecto 
+
+http://localhost:8080/api/bookings/1/service/4  post
+http://localhost:8080/api/bookings/1    get 
+http://localhost:8080/api/bookings  post
+
+http://localhost:8080/api/services get
+http://localhost:8080/api/services/1 get
+http://localhost:8080/api/services post
+http://localhost:8080/api/services/1 put
+http://localhost:8080/api/services/1 delet

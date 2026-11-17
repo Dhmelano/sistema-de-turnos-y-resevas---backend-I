@@ -31,6 +31,7 @@ router.get("/api/services/:id", async (req, res) => {
 router.post("/api/services", async (req, res) => {
     try {
         const newService = req.body;
+        console.log(newService)
         const service = await serviceManager.addService(newService);
         return res.status(201).json({ status: 'succes', payload: service });
     } catch (error) {
