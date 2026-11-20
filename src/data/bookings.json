@@ -9,11 +9,47 @@
     "services": [
       {
         "service": "3",
+        "quantity": 3
+      },
+      {
+        "service": "1",
+        "quantity": 1
+      },
+      {
+        "service": "4",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "clientName": "Juansfsfsf Pérez",
+    "clientEmail": "jusdfsfsdan@mail.com",
+    "date": "2026-11-20",
+    "time": "15:00",
+    "status": "pending",
+    "services": [
+      {
+        "service": "3",
         "quantity": 2
       },
       {
         "service": "1",
         "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "clientName": "Juan Pérez",
+    "clientEmail": "juan@mail.com",
+    "date": "2026-11-20",
+    "time": "15:00",
+    "status": "pending",
+    "services": [
+      {
+        "service": "3",
+        "quantity": 2
       }
     ]
   }

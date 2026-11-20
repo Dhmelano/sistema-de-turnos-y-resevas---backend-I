@@ -2,6 +2,8 @@ import { Router } from "express";
 import { fileURLToPath } from "url";
 import path from "path";
 import BookingManager from "../managers/BookingManager.js";
+import BookingController from "../controllers/booking.controller.js";
+
 
 
 const router = Router();
@@ -11,8 +13,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const bookingPath = path.resolve(__dirname, '../data/bookings.json');
 
-const manager = new BookingManager(bookingPath);
-
+const manager = new BookingManager(bookingPath); 
+const bookingController = new BookingController ();
 
 const sendError = (res, error) => {
     const statusCode = error.statusCode || 500;
@@ -23,56 +25,13 @@ const sendError = (res, error) => {
     });
 };
 
-router.get("/", async (req, res) => {
+router.get("/", (req, res)=> bookingController.getAll(req, res) );
 
-    try {
-        const bookings = await manager.getBookings();
-        res.status(200).json(bookings);
-    } catch (err) {
-        console.log(err);
-        sendError(res, err);
-    }
-})
+router.get("/:id" , (req,res)=> bookingController.getById(req,res));
 
-router.post("/", async (req, res) => {
-    const body = req.body;
-    try {
-        await manager.createBooking(body);
-        res.status(201).json({})
-    } catch (err) {
-        sendError(res, err);
-    }
-})
+router.post("/", (req,res)=> bookingController.createBooking(req,res));
 
-router.get("/:id", async (req, res) => {
-
-
-    try {
-        const { id } = req.params;
-        const bookings = await manager.getBookingsById(id);
-        return res.status(200).json({ status: 'success', payload: bookings });
-
-    } catch (error) {
-        console.log(error)
-
-        sendError(res, error);
-    }
-
-
-});
-
-router.post('/:bid/service/:sid', async (req, res) => {
-    try {
-        const { bid, sid } = req.params;
-        const updatedBooking = await manager.addServiceToBooking(bid, sid);
-        res.status(200).json({ status: 'success', payload: updatedBooking });
-    } catch (error) {
-       sendError(res, error);
-    }
-});
-
-
-
+router.post("/:bid/service/:sid", (req,res)=> bookingController.postServiceToBooking(req,res));
 
 
 export default router

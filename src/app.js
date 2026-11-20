@@ -11,7 +11,7 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.use(servicesRouter);
+// app.use(servicesRouter);
 
 app.use('/api/services', servicesRouter);
 app.use('/api/bookings', bookingRouter);
